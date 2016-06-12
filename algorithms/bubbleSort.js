@@ -31,7 +31,19 @@
 // Feel free to add helper functions if needed.
 // Introduce i into the global scope so we can test function efficiency
 
+var swap = function (array, current, next){
+  var temp = array[current];
+  array[current] = array[next];
+  array[next] = temp;
+}
 
 var bubbleSort = function (array){
-
+  var isSwapped = false;
+  for (var i = 0; i < array.length; i++){
+    if (array[i] > array[i+1]){
+      swap(array, i, i+1);
+      isSwapped = true;
+    }
+  }
+  return isSwapped ? bubbleSort(array) : array;
 };
